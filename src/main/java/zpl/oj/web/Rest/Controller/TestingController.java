@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import zpl.oj.dao.InviteDao;
@@ -141,11 +142,12 @@ public class TestingController {
 	 * 登陆，判断用户合法性 判断用户是否已经开始做题，返回试题列表 未开始，返回用户信息
 	 */
 
-	@RequestMapping(value = "/getSchools")
+	@RequestMapping(value = "/getSchools",method=RequestMethod.GET)
 	@ResponseBody
 	public ResponseBase getSchools(@RequestBody Map<String, Object> params) {
 		ResponseBase rb = new ResponseBase();
-		String schoolName = (String) params.get("schoolName");
+		
+		//String schoolName = (String) params.get("schoolName");
 		List<School> schools=schoolService.getAllSchools();
 		rb.setState(200);
 		rb.setMessage(schools);

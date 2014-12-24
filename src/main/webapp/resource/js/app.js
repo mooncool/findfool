@@ -12,7 +12,8 @@ var OJApp = angular.module('OJApp', [
     'ngCkeditor',
     'lr.upload',
     'ui.event', 
-    'ui.autocomplete'
+    'ui.autocomplete',
+    'angucomplete-alt'
 ]);
 
 

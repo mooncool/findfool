@@ -2,19 +2,23 @@
 OJApp.controller('testingController',function ($scope,$http,Data,$routeParams,$timeout,$sce,$compile) {
 	//根据头信息解析出测试id和用户id，检查有没有开始做测试
 	
+	/*
 	 var param = strDec($routeParams.url, "1", "2", "3").split("|");
 	 $scope.email = param[0];
 	 $scope.tid = param[1];
 	 
 	 $scope.tuser = {};
 	 $scope.loginUser={};
+	*/
 	
+	 $scope.email = "693605668@qq.com";
+	 $scope.testid = 1;
 
      $scope.schools = [];
 	 $scope.question = {};
 	 $scope.programCode = {};
 
-	 
+/*	 
 	 //检查该url是否合法
 	 $http({
          url: WEBROOT+"/testing/checkurl",
@@ -39,7 +43,7 @@ OJApp.controller('testingController',function ($scope,$http,Data,$routeParams,$t
      }).error(function(){
     	 console.log("get data failed");
      })
-     
+ */    
      //登陆
 	 $scope.login = function(){
 		 $http({
@@ -65,7 +69,19 @@ OJApp.controller('testingController',function ($scope,$http,Data,$routeParams,$t
 	     })
 	 }
 	 
+	 $scope.show =2;
 	 
+	 $scope.tuser={};
+	 
+	 $http({
+         url: WEBROOT+"/testing/getSchools",
+         method: 'POST',
+         data:{}
+     }).success(function (data) {
+    	 $scope.schools=data.message;
+     });
+
+	/*
 	 
 	 //学校字段的自动补全功能
 	 $scope.changeClass = function (options) {
@@ -92,7 +108,7 @@ OJApp.controller('testingController',function ($scope,$http,Data,$routeParams,$t
 		        }
 		    }
 		};
-	 
+	*/ 
 	 //提交用户信息
 	 $scope.submitUserInfo = function(){
 		 var sendData ={"email":$scope.email,"testid":$scope.tid,"tuser":$scope.tuser}
